@@ -40,12 +40,14 @@ export default {
   min-width: 18vw;
   max-width: 28vw;
   background-color: #24232C;
+  border: 1px solid #A4FFAF;
   border-radius: 8px;
   padding: 0.5vh 1vw;
   position: fixed;
+  z-index: 10;
   bottom: 5vh;
   right: -30vw;
-  transition: right 1s;
+  transition: right 0.5s;
   font-size: 1.2em;
   color: #E6E5EA;
   display: flex;

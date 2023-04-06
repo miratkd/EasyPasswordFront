@@ -48,4 +48,9 @@ export default {
   color: #A4FFAF;
   cursor: pointer;
 }
+@media screen and (max-width: 800px) {
+  .password-input-icon{
+    display: none;
+  }
+}
 </style>

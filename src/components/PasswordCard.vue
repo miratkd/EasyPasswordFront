@@ -1,6 +1,7 @@
 <template>
     <div class="password-card-container">
-        <span class="material-icons password-card-alert-icon" :title="localPasswordMessage">error_outline</span>
+        <span v-if="isLocal" v-on:click="saveLocalPassword(password)" class="material-icons password-card-alert-icon"
+            :title="localPasswordMessage">error_outline</span>
         <div style="display: flex; gap: 1vw; align-items: center;">
             <p class="password-card-input-label">Site:</p>
             <input class="password-card-input password-card-input-label" type="text" disabled :value="password.site">
@@ -8,7 +9,7 @@
         <div style="display: flex; gap: 1vw; align-items: center;">
             <p class="password-card-input-label">Senha:</p>
             <input class="password-card-input password-card-input-label password-card-password-input" :type="getType()"
-                disabled :value="password.password">
+                readonly :value="password.password">
             <span v-if="showPassword" class="material-icons password-card-show-icon" style="color: #A4FFAF"
                 v-on:click="showPassword = !showPassword">visibility</span>
             <span v-else class="material-icons password-card-show-icon" style="color: gray"
@@ -21,11 +22,11 @@
 <script>
 export default {
     name: 'PasswordCard',
-    props: ['password', 'callNotification'],
+    props: ['password', 'callNotification', 'isLocal', 'saveLocalPassword'],
     data() {
         return {
             showPassword: false,
-            localPasswordMessage: 'Esta senha esta salva nesse dispositivo (nootebook, tablet, celular...), para ter acesso a esta senha em outros dispositivos, salve essa senha nas nuvens.'
+            localPasswordMessage: 'Esta senha esta salva apenas nesse dispositivo (nootebook, tablet, celular...), clique aqui para salvar esta senha nas nuvens e ter acesso a ela em outros dispositivos.'
         }
     },
     methods: {
@@ -87,4 +88,11 @@ export default {
     cursor: pointer;
     font-size: 1.6em;
     margin-left: auto;
-}</style>
+}
+
+@media screen and (max-width: 800px) {
+    .password-card-copy-icon {
+        display: none;
+    }
+}
+</style>

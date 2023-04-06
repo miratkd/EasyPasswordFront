@@ -5,22 +5,22 @@
       <p class="config-title-number">{{charNumber}}</p>
     </div>
     <input class="config-range-input" v-model="charNumber" min="5" max="15" type="range">
-    <div class="config-check-container" v-on:click="upperCase = !upperCase">
+    <div class="config-check-container" v-on:click="updateUpperCase(!upperCase)">
       <span v-if="upperCase" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir letra maiúsculas.</p>
     </div>
-    <div class="config-check-container" v-on:click="lowerCase = !lowerCase">
+    <div class="config-check-container" v-on:click="updateLowerCase(!lowerCase)">
       <span v-if="lowerCase" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir letra minúsculas.</p>
     </div>
-    <div class="config-check-container" v-on:click="numbers = !numbers">
+    <div class="config-check-container" v-on:click="updateNumbers(!numbers)">
       <span v-if="numbers" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir numeros.</p>
     </div>
-    <div class="config-check-container" v-on:click="symbols = !symbols">
+    <div class="config-check-container" v-on:click="updateSymbols(!symbols)">
       <span v-if="symbols" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir simbolos.</p>
@@ -57,6 +57,18 @@ export default {
     }
   },
   methods: {
+    updateUpperCase (value) {
+      if (this.lowerCase || this.numbers || this.symbols) this.upperCase = value
+    },
+    updateLowerCase (value) {
+      if (this.upperCase || this.numbers || this.symbols) this.lowerCase = value
+    },
+    updateNumbers (value) {
+      if (this.lowerCase || this.upperCase || this.symbols) this.numbers = value
+    },
+    updateSymbols (value) {
+      if (this.upperCase || this.numbers || this.lowerCase) this.symbols = value
+    },
     getLevelName() {
       if (this.passwordLevel == 1) return 'Muito fraca!'
       else if (this.passwordLevel == 2) return 'Fraca.'

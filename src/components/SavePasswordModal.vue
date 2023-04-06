@@ -9,7 +9,7 @@
                 <p>Salvar nas nuvens.</p>
             </div>
             <div class="save-modal-button-container">
-                <button class="save-modal-button" v-on:click="savePassword(siteName, cloundSave)">Salvar</button>
+                <button class="save-modal-button" v-on:click="saveClick()">Salvar</button>
             </div>
         </div>
     </div>
@@ -19,13 +19,20 @@
 
 export default {
     name: 'SavePasswordModal',
-    props: ['closeModal', 'savePassword'],
-    data () {
+    props: ['closeModal', 'savePassword', 'callNotification'],
+    data() {
         return {
-            cloundSave: false,
+            cloundSave: true,
             siteName: ''
         }
+    },
+    methods: {
+        saveClick() {
+            if (this.siteName) this.savePassword(this.siteName, this.cloundSave)
+            else {this.callNotification('Insira o nome do site');}
+        }
     }
+
 }
 </script>
 
@@ -85,13 +92,15 @@ export default {
 .save-modal-check-false {
     font-size: 1.5em;
 }
-.save-modal-button-container{
+
+.save-modal-button-container {
     display: flex;
     justify-content: center;
     margin: 5vh 0;
     width: 80%;
 }
-.save-modal-button{
+
+.save-modal-button {
     background: #A4FFAF;
     border: 1px solid #A4FFAF;
     padding: 1vh 0;
@@ -106,8 +115,23 @@ export default {
     width: 45%;
     border-radius: 5px;
 }
-.save-modal-button:hover{
+
+.save-modal-button:hover {
     background-color: transparent;
     color: #A4FFAF;
 }
-</style>
+@media (max-width: 550px) {
+    .save-modal{
+        width: 75vw;
+        padding-left: 3vw;
+    }
+    .save-modal-input{width: 95%;}
+    .save-modal-check-container{
+        justify-content: center;
+        width: unset;
+    }
+    .save-modal-button-container{width: 100%;}
+    .save-modal-text{
+        text-align: center;
+    }
+}</style>

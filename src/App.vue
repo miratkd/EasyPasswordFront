@@ -7,7 +7,7 @@
         <span class="material-icons page-welcome-cancel" v-on:click="showEndSession = true">cancel</span>
       </div>
       <h1 v-else class="page-login-message">
-        Faça <b class="page-login-message-buttons" v-on:click="showLoginModal = true">Loguin</b> ou <b
+        Faça <b class="page-login-message-buttons" v-on:click="showLoginModal = true">Login</b> ou <b
           class="page-login-message-buttons" v-on:click="showCreateAccount = true">Crie uma conta</b>
       </h1>
       <PasswordInput :callNotification="callNotification" :setPassword="getPasswordCreated" :password="password" />

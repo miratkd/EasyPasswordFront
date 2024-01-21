@@ -1,37 +1,37 @@
 <template>
     <div class="create-modal-container" v-on:click="closeModal()">
-        <div class="create-modal" @click.stop>
+        <div data-test="create-account-modal" class="create-modal" @click.stop>
             <h1 class="create-account-header">Para poder salvar suas senhas, por favor crie uma conta.</h1>
             <div class="create-account-form-row">
                 <p class="create-account-input-label">Usuário :</p>
                 <div class="create-account-input-container">
-                    <input type="text" class="create-account-input" :class="checkMessage(userMessage)" v-model="user">
-                    <p>{{userMessage}}</p>
+                    <input type="text" data-test="user-name-input" class="create-account-input" :class="checkMessage(userMessage)" v-model="user">
+                    <p data-test="user-message">{{userMessage}}</p>
                 </div>
             </div>
             <div class="create-account-form-row">
                 <p class="create-account-input-label">Email :</p>
                 <div class="create-account-input-container">
-                    <input type="email" class="create-account-input" v-model="email" :class="checkMessage(emailMessage)">
-                    <p>{{emailMessage}}</p>
+                    <input type="email"  data-test="user-email-input" class="create-account-input" v-model="email" :class="checkMessage(emailMessage)">
+                    <p data-test="email-message">{{emailMessage}}</p>
                 </div>
             </div>
             <div class="create-account-form-row">
                 <p class="create-account-input-label">Senha :</p>
                 <div class="create-account-input-container">
-                    <input type="password" class="create-account-input" v-model="password" :class="checkMessage(passwordMessage)">
-                    <p>{{passwordMessage}}</p>
+                    <input type="password"  data-test="user-password1-input" class="create-account-input" v-model="password" :class="checkMessage(passwordMessage)">
+                    <p data-test="password-message">{{passwordMessage}}</p>
                 </div>
             </div>
             <div class="create-account-form-row">
                 <p class="create-account-input-label">Confirmar senha :</p>
                 <div class="create-account-input-container">
-                    <input type="password" class="create-account-input" v-model="checkPassword" :class="checkMessage(checkPasswordMessage)">
-                    <p>{{checkPasswordMessage}}</p>
+                    <input type="password"  data-test="user-password2-input" class="create-account-input" v-model="checkPassword" :class="checkMessage(checkPasswordMessage)">
+                    <p data-test="check-password-message">{{checkPasswordMessage}}</p>
                 </div>
             </div>
             <div class="create-account-button-container">
-                <button class="create-account-button" v-on:click="createAccount()">Criar conta</button>
+                <button data-test="modal-create-account-button" class="create-account-button" v-on:click="createAccount()">Criar conta</button>
             </div>
         </div>
     </div>
@@ -55,6 +55,10 @@ export default {
     },
     methods:{
         createAccount () {
+            this.emailMessage = ''
+            this.userMessage = ""
+            this.passwordMessage = ""
+            this.checkPasswordMessage = ''
             if (!this.user) this.userMessage = 'Campo obrigatório.'
             if (!this.email) this.emailMessage = 'Campo obrigatório.'
             if (!this.password) this.passwordMessage = 'Campo obrigatório.'

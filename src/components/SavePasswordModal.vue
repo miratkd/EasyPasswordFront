@@ -1,15 +1,15 @@
 <template>
     <div class="save-modal-container" v-on:click="closeModal()">
-        <div class="save-modal" @click.stop>
+        <div data-test="save-modal" class="save-modal" @click.stop>
             <p class="save-modal-text">Nome do Site:</p>
-            <input type="text" v-model="siteName" class="save-modal-input save-modal-text">
-            <div class="save-modal-check-container" v-on:click="cloundSave = !cloundSave">
+            <input data-test="site-name-input" type="text" v-model="siteName" class="save-modal-input save-modal-text">
+            <div data-test="save-cloud-check" class="save-modal-check-container" v-on:click="cloundSave = !cloundSave">
                 <span v-if="cloundSave" class="material-icons save-modal-check-true">check_box</span>
                 <span v-else class="material-icons save-modal-check-false">check_box_outline_blank</span>
                 <p>Salvar nas nuvens.</p>
             </div>
             <div class="save-modal-button-container">
-                <button class="save-modal-button" v-on:click="saveClick()">Salvar</button>
+                <button data-test="save-password-button" class="save-modal-button" v-on:click="saveClick()">Salvar</button>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="password-input-container">
-    <input type="text" :value="password" v-on:change="setPassword($event.target.value)" placeholder="PTx1f5DaFX" class="password-input-input">
+    <input type="text" :value="password" data-test="password-input" v-on:change="setPassword($event.target.value)" placeholder="PTx1f5DaFX" class="password-input-input">
     <span v-on:click="copyToClipboard()" class="material-icons password-input-icon">content_copy</span>
   </div>
 </template>

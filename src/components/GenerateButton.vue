@@ -1,5 +1,5 @@
 <template>
-    <div v-on:click="action()" class="generate-button-container">
+    <div v-on:click="action()" data-test="generate-password-button" class="generate-button-container">
         <p>Gerar senha</p>
         <span class="material-icons">arrow_forward</span>
     </div>

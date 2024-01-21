@@ -1,5 +1,5 @@
 <template>
-    <div v-on:click="action()" class="generate-button-container">
+    <div v-on:click="action()" data-test="save-button" class="generate-button-container">
         <p>Salvar senha</p>
         <span class="material-icons">save</span>
     </div>

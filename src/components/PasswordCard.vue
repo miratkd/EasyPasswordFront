@@ -1,18 +1,18 @@
 <template>
-    <div class="password-card-container">
-        <span v-if="isLocal" v-on:click="saveLocalPassword(password)" class="material-icons password-card-alert-icon"
+    <div data-test="password-card-container" class="password-card-container">
+        <span v-if="isLocal" data-test="local-alert" v-on:click="saveLocalPassword(password)" class="material-icons password-card-alert-icon"
             :title="localPasswordMessage">error_outline</span>
         <div style="display: flex; gap: 1vw; align-items: center;">
             <p class="password-card-input-label">Site:</p>
-            <input class="password-card-input password-card-input-label" type="text" disabled :value="password.site">
+            <input data-test="password-card-input-name" class="password-card-input password-card-input-label" type="text" disabled :value="password.site">
         </div>
         <div style="display: flex; gap: 1vw; align-items: center;">
             <p class="password-card-input-label">Senha:</p>
-            <input class="password-card-input password-card-input-label password-card-password-input" :type="getType()"
+            <input data-test="password-card-input-value" class="password-card-input password-card-input-label password-card-password-input" :type="getType()"
                 readonly :value="password.password">
-            <span v-if="showPassword" class="material-icons password-card-show-icon" style="color: #A4FFAF"
+            <span data-test="hide-password" v-if="showPassword" class="material-icons password-card-show-icon" style="color: #A4FFAF"
                 v-on:click="showPassword = !showPassword">visibility</span>
-            <span v-else class="material-icons password-card-show-icon" style="color: gray"
+            <span data-test="show-password" v-else class="material-icons password-card-show-icon" style="color: gray"
                 v-on:click="showPassword = !showPassword">visibility_off</span>
             <span class="material-icons password-card-copy-icon" v-on:click="copyToClipboard()">content_copy</span>
         </div>

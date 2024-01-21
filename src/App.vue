@@ -3,12 +3,12 @@
     <div class="page-card">
       <h1 class="page-title">Easy Passsword</h1>
       <div v-if="account" class="page-welcome-container">
-        <h3 class="page-title">Bem vindo {{ account.user.username }}</h3>
+        <h3 data-test="page-title" class="page-title">Bem vindo {{ account.user.username }}</h3>
         <span class="material-icons page-welcome-cancel" v-on:click="showEndSession = true">cancel</span>
       </div>
       <h1 v-else class="page-login-message">
         Faça <b class="page-login-message-buttons" v-on:click="showLoginModal = true">Login</b> ou <b
-          class="page-login-message-buttons" v-on:click="showCreateAccount = true">Crie uma conta</b>
+          class="page-login-message-buttons" data-test="create-account-button" v-on:click="showCreateAccount = true">Crie uma conta</b>
       </h1>
       <PasswordInput :callNotification="callNotification" :setPassword="getPasswordCreated" :password="password" />
       <PasswordConfig :savePassword="showPasswordModal" :getPasswordCreated="getPasswordCreated" />
@@ -137,7 +137,10 @@ export default {
     callNotification(text) { this.notificationText = text },
     clearNotification() { this.notificationText = undefined },
     getPasswordCreated(value) { this.password = value },
-    showPasswordModal() { this.showSaveModal = true },
+    showPasswordModal() { 
+      if (this.password) this.showSaveModal = true
+      else this.callNotification('Por favor insira uma senha.')
+    },
     closeSaveModal() { this.showSaveModal = false },
     closeCreateModal() { this.showCreateAccount = false },
     saveFirstPassword() {
@@ -157,6 +160,8 @@ export default {
       })
     },
     savePassword(siteName, saveOnClound) {
+      if(!this.password) console.log('asdasdsa');
+      console.log(this.password);
       if (saveOnClound && !this.account) {
         this.siteName = siteName
         this.showCreateAccount = true

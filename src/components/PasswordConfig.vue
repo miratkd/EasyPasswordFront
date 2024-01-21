@@ -4,23 +4,23 @@
       <p>Quantidade de caracteres</p>
       <p class="config-title-number">{{charNumber}}</p>
     </div>
-    <input class="config-range-input" v-model="charNumber" min="5" max="15" type="range">
-    <div class="config-check-container" v-on:click="updateUpperCase(!upperCase)">
+    <input data-test="slide-input" class="config-range-input" v-model="charNumber" min="5" max="15" type="range">
+    <div class="config-check-container" data-test="upper-check" v-on:click="updateUpperCase(!upperCase)">
       <span v-if="upperCase" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir letra maiúsculas.</p>
     </div>
-    <div class="config-check-container" v-on:click="updateLowerCase(!lowerCase)">
+    <div class="config-check-container" data-test="lower-check" v-on:click="updateLowerCase(!lowerCase)">
       <span v-if="lowerCase" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir letra minúsculas.</p>
     </div>
-    <div class="config-check-container" v-on:click="updateNumbers(!numbers)">
+    <div class="config-check-container" data-test="numbers-check" v-on:click="updateNumbers(!numbers)">
       <span v-if="numbers" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir numeros.</p>
     </div>
-    <div class="config-check-container" v-on:click="updateSymbols(!symbols)">
+    <div class="config-check-container" data-test="symbols-check" v-on:click="updateSymbols(!symbols)">
       <span v-if="symbols" class="material-icons config-check-true">check_box</span>
       <span v-else class="material-icons config-check-false">check_box_outline_blank</span>
       <p>Incluir simbolos.</p>
@@ -28,7 +28,7 @@
     <div class="config-level-container">
       <p class="config-level-label">Força</p>
       <div class="config-level-bars-container">
-        <p class="config-level-name">{{getLevelName()}}</p>
+        <p data-test="level-name" class="config-level-name">{{getLevelName()}}</p>
         <div class="config-level-bar" :class="getActiveBar(1)"></div>
         <div class="config-level-bar" :class="getActiveBar(2)"></div>
         <div class="config-level-bar" :class="getActiveBar(3)"></div>

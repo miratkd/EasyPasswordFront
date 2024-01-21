@@ -1,5 +1,5 @@
 <template>
-  <div id="notificationContainerDiv" class="notification-container">
+  <div id="notificationContainerDiv" data-test="notification-container" class="notification-container">
     {{ text }}
     <span v-on:click="closeNotification()" class="material-icons notification-container-icon">cancel</span>
   </div>
